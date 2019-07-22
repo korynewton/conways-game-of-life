@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import Rules from './Rules';
 import Controls from './Controls';
 import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 // import { withStyles } from '@material-ui/core/styles';
 
 class GridCanvas extends Component {
@@ -341,8 +341,13 @@ class GridCanvas extends Component {
   render() {
     return (
       <>
-        <Box position="relative">
-          <Box position="absolute" top={0} left={0} zIndex={1}>
+        <Box
+          position="relative"
+          mx="auto"
+          width={this.props.width + 1}
+          height={this.props.height + 1}
+        >
+          <Box position="absolute" top={0} zIndex={1}>
             <canvas
               ref="canvas"
               width={this.props.width + 1}
@@ -350,7 +355,7 @@ class GridCanvas extends Component {
               onClick={e => this.handleClick(e)}
             />
           </Box>
-          <Box position="absolute" top={0} left={0} zIndex={0}>
+          <Box position="absolute" top={0} zIndex={0} left={0}>
             <canvas
               ref="grid"
               width={this.props.width + 1}
@@ -358,7 +363,24 @@ class GridCanvas extends Component {
             />
           </Box>
         </Box>
-        <Controls />
+        <div>
+          <Button variant="contained" color="primary">
+            Play
+          </Button>
+          <Button variant="contained" color="primary">
+            Pause
+          </Button>
+          <Button variant="contained" color="primary">
+            Step To Next Generation
+          </Button>
+          <Button variant="contained" color="primary">
+            Randomize
+          </Button>
+          <Button variant="contained" color="primary">
+            Clear
+          </Button>
+        </div>
+
         {/* <div className="leftPannel">
           <div className="controls">
             <h3>Generations: {this.state.generation}</h3>
