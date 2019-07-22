@@ -167,12 +167,10 @@ class GridCanvas extends Component {
     }
   }
 
-  presetObjects = e => {
-    let { name } = e.target;
-
+  presetObjects = name => {
     let cells;
 
-    if (name === 'glider') {
+    if (name === 'Glider') {
       cells = new Array(this.numberCellsTall);
       for (let i = 0; i < this.numberCellsTall; i++) {
         cells[i] = new Array(this.numberCellsWide);
@@ -190,7 +188,7 @@ class GridCanvas extends Component {
       }
     }
 
-    if (name === 'blinker') {
+    if (name === 'Blinker') {
       cells = new Array(this.numberCellsTall);
       for (let i = 0; i < this.numberCellsTall; i++) {
         cells[i] = new Array(this.numberCellsWide);
@@ -208,7 +206,7 @@ class GridCanvas extends Component {
       }
     }
 
-    if (name === 'unsure') {
+    if (name === 'Random Weird Thing') {
       cells = new Array(this.numberCellsTall);
       for (let i = 0; i < this.numberCellsTall; i++) {
         cells[i] = new Array(this.numberCellsWide);
@@ -228,7 +226,7 @@ class GridCanvas extends Component {
       }
     }
 
-    if (name === 'otherblinker') {
+    if (name === 'Beacon') {
       cells = new Array(this.numberCellsTall);
       for (let i = 0; i < this.numberCellsTall; i++) {
         cells[i] = new Array(this.numberCellsWide);
@@ -244,6 +242,16 @@ class GridCanvas extends Component {
           } else {
             cells[i][j] = 0;
           }
+        }
+      }
+    }
+
+    if (name === 'None') {
+      cells = new Array(this.numberCellsTall);
+      for (let i = 0; i < this.numberCellsTall; i++) {
+        cells[i] = new Array(this.numberCellsWide);
+        for (let j = 0; j < this.numberCellsWide; j++) {
+          cells[i][j] = 0;
         }
       }
     }
@@ -347,7 +355,7 @@ class GridCanvas extends Component {
           width={this.props.width + 1}
           height={this.props.height + 1}
         >
-          <Box position="absolute" top={0} zIndex={1}>
+          <Box position="absolute" top={0} zIndex={0}>
             <canvas
               ref="canvas"
               width={this.props.width + 1}
@@ -355,7 +363,7 @@ class GridCanvas extends Component {
               onClick={e => this.handleClick(e)}
             />
           </Box>
-          <Box position="absolute" top={0} zIndex={0} left={0}>
+          <Box position="absolute" top={0} zIndex={-1} left={0}>
             <canvas
               ref="grid"
               width={this.props.width + 1}
@@ -363,7 +371,7 @@ class GridCanvas extends Component {
             />
           </Box>
         </Box>
-        <Controls />
+        <Controls handlePresetObj={this.presetObjects} />
 
         {/* <div className="leftPannel">
           <div className="controls">

@@ -12,18 +12,15 @@ import MenuList from '@material-ui/core/MenuList';
 
 const options = ['None', 'Glider', 'Beacon', 'Blinker', 'Random Weird Thing'];
 
-export default function SplitButton() {
+export default function SplitButton(props) {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
-  function handleClick() {
-    alert(`You clicked ${options[selectedIndex]}`);
-  }
-
   function handleMenuItemClick(event, index) {
     setSelectedIndex(index);
     setOpen(false);
+    props.handlePresetObj(options[index]);
   }
 
   function handleToggle() {
@@ -47,7 +44,7 @@ export default function SplitButton() {
           ref={anchorRef}
           aria-label="Split button"
         >
-          <Button onClick={handleClick}>{options[selectedIndex]}</Button>
+          <Button>{options[selectedIndex]}</Button>
           <Button
             color="primary"
             variant="contained"
@@ -79,7 +76,6 @@ export default function SplitButton() {
                     {options.map((option, index) => (
                       <MenuItem
                         key={option}
-                        // disabled={index === 2}
                         selected={index === selectedIndex}
                         onClick={event => handleMenuItemClick(event, index)}
                       >

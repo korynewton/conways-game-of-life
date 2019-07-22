@@ -5,7 +5,7 @@ import OptionsButton from './OptionsButton';
 
 import './styles.css';
 
-function Controls() {
+function Controls(props) {
   return (
     <>
       <div className="controlBox">
@@ -27,8 +27,8 @@ function Controls() {
             Clear
           </Button>
         </div>
-        <Typography variant="h7">Preset Objects:</Typography>
-        <OptionsButton />
+        <Typography>Preset Objects:</Typography>
+        <OptionsButton handlePresetObj={props.handlePresetObj} />
       </div>
     </>
   );
