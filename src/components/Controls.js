@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import OptionsButton from './OptionsButton';
 
 import './styles.css';
 
@@ -26,6 +27,8 @@ function Controls() {
             Clear
           </Button>
         </div>
+        <Typography variant="h7">Preset Objects:</Typography>
+        <OptionsButton />
       </div>
     </>
   );

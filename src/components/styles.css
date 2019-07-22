@@ -1,6 +1,7 @@
 .buttonDiv {
   display: flex;
   width: 50%;
+  /* border: 1px solid blue; */
   margin: 10px 0;
   align-items: center;
   justify-content: space-around;
