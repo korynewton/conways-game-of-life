@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-// import Rules from './Rules';
 import Controls from './Controls';
 import Box from '@material-ui/core/Box';
-
-// import { withStyles } from '@material-ui/core/styles';
+import Modal from './Modal';
+import { Typography } from '@material-ui/core';
 
 class GridCanvas extends Component {
   constructor(props) {
@@ -31,7 +30,7 @@ class GridCanvas extends Component {
     clearInterval(this.intervalId);
   };
 
-  randomize() {
+  randomize = () => {
     // first off, clear the board
     this.clearBoard();
 
@@ -48,9 +47,9 @@ class GridCanvas extends Component {
     this.setState({ cells: randomized });
     // redraw
     this.redraw(randomized);
-  }
+  };
 
-  stepToNextGen() {
+  stepToNextGen = () => {
     this.setState({ generation: this.state.generation + 1 });
 
     let cells = arrayClone(this.state.cells);
@@ -119,10 +118,10 @@ class GridCanvas extends Component {
 
     this.setState({ cells: newCells });
     this.redraw(newCells);
-  }
+  };
 
   // clears board, reinitializes cells to 0
-  reset() {
+  reset = () => {
     this.clearBoard();
 
     let cells = new Array(this.numberCellsTall);
@@ -133,15 +132,15 @@ class GridCanvas extends Component {
       }
     }
     this.setState({ cells, generation: 0 });
-  }
+  };
 
-  clearBoard() {
+  clearBoard = () => {
     // find canvas element, save as variable
     const canvas = this.refs.canvas;
     // creating a drawing object for our canvas
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, this.props.width, this.props.height);
-  }
+  };
 
   redraw(cells) {
     // first clear board
@@ -349,6 +348,12 @@ class GridCanvas extends Component {
   render() {
     return (
       <>
+        <div className="topDiv">
+          <Typography variant="subtitle1" align="center" gutterBottom={true}>
+            Generation: {this.state.generation}
+          </Typography>
+          <Modal />
+        </div>
         <Box
           position="relative"
           mx="auto"
@@ -371,7 +376,14 @@ class GridCanvas extends Component {
             />
           </Box>
         </Box>
-        <Controls handlePresetObj={this.presetObjects} />
+        <Controls
+          play={this.runLife}
+          pause={this.pause}
+          handlePresetObj={this.presetObjects}
+          step={this.stepToNextGen}
+          randomize={this.randomize}
+          reset={this.reset}
+        />
 
         {/* <div className="leftPannel">
           <div className="controls">

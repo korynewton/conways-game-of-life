@@ -9,21 +9,41 @@ function Controls(props) {
   return (
     <>
       <div className="controlBox">
-        <Typography variant="h5">Controls:</Typography>
         <div className="buttonDiv">
-          <Button variant="contained" color="primary">
+          <Typography variant="h5">Controls:</Typography>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => props.play()}
+          >
             Play
           </Button>
-          <Button variant="contained" color="primary">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => props.pause()}
+          >
             Pause
           </Button>
-          <Button variant="contained" color="primary">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => props.step()}
+          >
             Step To Next Generation
           </Button>
-          <Button variant="contained" color="primary">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => props.randomize()}
+          >
             Randomize
           </Button>
-          <Button variant="contained" color="primary">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => props.reset()}
+          >
             Clear
           </Button>
         </div>
