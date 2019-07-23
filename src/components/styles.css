@@ -22,3 +22,14 @@
   width: 50%;
   margin: 10px auto;
 }
+
+.bottomRow {
+  display: flex;
+  width: 50%;
+  justify-content: space-around;
+}
+
+.verticalOptions {
+  display: flex;
+  flex-flow: column;
+}

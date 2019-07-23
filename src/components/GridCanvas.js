@@ -384,37 +384,7 @@ class GridCanvas extends Component {
           randomize={this.randomize}
           reset={this.reset}
         />
-
-        {/* <div className="leftPannel">
-          <div className="controls">
-            <h3>Generations: {this.state.generation}</h3>
-            <button onClick={() => this.stepToNextGen()}>
-              Next Generation
-            </button>
-            <button onClick={() => this.reset()}>Clear Board</button>
-            <button onClick={() => this.randomize()}>Randomize</button>
-            <button onClick={() => this.runLife()}>Play</button>
-            <button onClick={() => this.pause()}>Pause</button>
-          </div>
-        </div> */}
       </>
-      /* <div className="controls">
-            <h3>Presets:</h3>
-            <button name="glider" onClick={e => this.presetObjects(e)}>
-              Glider
-            </button>
-            <button name="blinker" onClick={e => this.presetObjects(e)}>
-              Blinker
-            </button>
-            <button name="unsure" onClick={e => this.presetObjects(e)}>
-              Not Sure What This Is
-            </button>
-            <button name="otherblinker" onClick={e => this.presetObjects(e)}>
-              Another Blinker
-            </button>
-          </div>
-        </div> */
-      /* <Rules /> */
     );
   }
 }
